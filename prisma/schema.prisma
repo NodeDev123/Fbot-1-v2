@@ -1,0 +1,63 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+model User {
+  id Int @id @default(autoincrement())
+
+  userId        String    @unique
+  userName      String    @default("")
+  invitedUsers  Int       @default(0)
+  amount        Int       @default(0)
+  lastBonusDate DateTime
+  accountNumber String    @default("")
+  lastUsed      DateTime  @default(now()) @updatedAt()
+  hasWithdrawn  Boolean   @default(false)
+  taskIds       String    @default("")
+  lastTaskDate  DateTime?
+  botID         String    @default("freebot_1")
+
+  status String @default("Idle")
+}
+
+model Task {
+  id String @id
+
+  chatId      String  @default("")
+  link        String  @default("")
+  description String  @default("")
+  priority    Int     @default(1)
+  reward      Int     @default(0)
+  joinRequest Boolean @default(false)
+
+  processStatus String @unique @default(cuid())
+}
+
+model UserTasks {
+  id String @id @default(cuid())
+
+  taskId String
+  userId String
+}
+
+model Channels {
+  id String @id @default(cuid())
+
+  tgID              String  @default("")
+  name              String  @default("Test")
+  link              String  @default("")
+  type              String  @default("main")
+  joinRequest       Boolean @default(false)
+  withdrawalChannel Boolean @default(false)
+
+  processStatus String @unique @default(cuid())
+}
