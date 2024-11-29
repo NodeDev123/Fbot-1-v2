@@ -20,7 +20,7 @@ export async function accountValid(ctx) {
     CHANNELS = [
         ...CHANNELS,
         {
-            tgID: "-1002279447886",
+            tgID: "-1002459279055",
         },
     ];
 
