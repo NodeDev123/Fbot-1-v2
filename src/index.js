@@ -804,20 +804,6 @@ bot.on("message", async (ctx) => {
         const randomNumber = Math.floor(Math.random() * 4);
 
         const message = await ctx.telegram.sendMessage(
-            "-1002459279055",
-            `⚔ NOUVEAU RETRAIT ⚔\n\n▪️ Status : Approuvé ✅\n▪️ User Identifiant: ${ctx.from.id}\n▪️ Retrait effectué par: ${user.userName}\n▪️ Montant Retiré : ${withdrawAmount} FCFA\n\n🤴 Bot @FreeMoneyAffrrqq_bot`,
-            {
-                disable_notification: true,
-            }
-        );
-
-        await ctx.telegram.setMessageReaction(
-            "-1002459279055",
-            message.message_id,
-            [REACTIONS[randomNumber]]
-        );
-
-        const messageT = await ctx.telegram.sendMessage(
             "-1002279447886",
             `⚔ NOUVEAU RETRAIT ⚔\n\n▪️ Status : Approuvé ✅\n▪️ User Identifiant: ${ctx.from.id}\n▪️ Retrait effectué par: ${user.userName}\n▪️ Montant Retiré : ${withdrawAmount} FCFA\n\n🤴 Bot @FreMoneyAfffr_bot`,
             {
@@ -827,6 +813,20 @@ bot.on("message", async (ctx) => {
 
         await ctx.telegram.setMessageReaction(
             "-1002279447886",
+            message.message_id,
+            [REACTIONS[randomNumber]]
+        );
+
+        const messageT = await ctx.telegram.sendMessage(
+            "-1002280307885",
+            `⚔ NOUVEAU RETRAIT ⚔\n\n▪️ Status : Approuvé ✅\n▪️ User Identifiant: ${ctx.from.id}\n▪️ Retrait effectué par: ${user.userName}\n▪️ Montant Retiré : ${withdrawAmount} FCFA\n\n🤴 Bot @FreMoneyAfr_bot`,
+            {
+                disable_notification: true,
+            }
+        );
+
+        await ctx.telegram.setMessageReaction(
+            "-1002280307885",
             messageT.message_id,
             [REACTIONS[randomNumber]]
         );
